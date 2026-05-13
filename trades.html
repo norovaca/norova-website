@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Norova for Trades — Never lose a job to a competitor who responded faster. Lead response, follow-up, and review systems for GTA contractors." />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <title>Norova for Trades & Contractors — GTA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2e; --navy-mid: #132338; --navy-light: #1a2e4a;
+      --orange: #e8860a; --orange-light: #f5a030;
+      --cream: #f5f0e8; --cream-dim: #d4cfc7; --white: #ffffff;
+      --text-muted: #7a8a9a; --border: rgba(232, 134, 10, 0.15);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--cream); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: center; background: rgba(13, 27, 46, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { background: transparent; border: 1px solid var(--orange); color: var(--orange) !important; padding: 0.5rem 1.4rem; border-radius: 2px; transition: all 0.2s !important; }
+    .nav-cta:hover { background: var(--orange) !important; color: var(--navy) !important; }
+    .nav-back { color: var(--text-muted) !important; font-size: 0.75rem !important; }
+
+    #hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 8rem 4rem 5rem; text-align: center; overflow: hidden; background: #F5F0E8; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232, 134, 10, 0.1) 0%, transparent 60%), linear-gradient(180deg, #F5F0E8 0%, #EDE8DF 100%); }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards; }
+    .hero-norova { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 600; letter-spacing: 0.18em; color: #1A2E4A; line-height: 1; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+    .hero-tagline { font-family: var(--font-display); font-size: clamp(0.8rem, 1.8vw, 1rem); font-weight: 400; letter-spacing: 0.14em; color: #E8860A; margin-top: 0.2rem; font-style: italic; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .hero-headline { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.1; color: #1A2E4A; margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+    .hero-headline em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 1rem; color: #4a5568; max-width: 560px; margin: 0 auto 2.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+    .btn-primary { display: inline-block; background: var(--orange); color: var(--navy); text-decoration: none; padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; transition: all 0.25s ease; border: 1px solid var(--orange); }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232, 134, 10, 0.25); }
+    .btn-ghost { display: inline-block; background: transparent; color: var(--navy); text-decoration: none; padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; border: 1px solid rgba(26, 46, 74, 0.3); transition: all 0.25s ease; }
+    .btn-ghost:hover { border-color: var(--navy); }
+
+    section { position: relative; z-index: 1; padding: 6rem 4rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; color: var(--white); margin-bottom: 1.5rem; }
+    .section-title em { font-style: italic; color: var(--orange); }
+    .section-body { font-size: 1rem; color: var(--cream-dim); max-width: 600px; line-height: 1.8; margin-bottom: 1rem; }
+
+    /* PROBLEM */
+    #problem { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%); border-top: 1px solid var(--border); }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+    .problem-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.4rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; transition: all 0.3s ease; }
+    .problem-item:hover { background: rgba(232, 134, 10, 0.05); border-color: var(--border); transform: translateX(4px); }
+    .problem-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .problem-text { font-size: 0.9rem; color: var(--cream-dim); line-height: 1.6; }
+    .problem-text strong { color: var(--cream); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+    .solution-card { background: linear-gradient(135deg, var(--navy-light), rgba(13,27,46,0.8)); border: 1px solid var(--border); border-radius: 8px; padding: 2.2rem; position: relative; overflow: hidden; }
+    .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+    .solution-card-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+    .solution-points { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .solution-point { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(--cream-dim); }
+    .solution-point::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+
+    /* PACKAGES */
+    #packages { background: var(--navy); border-top: 1px solid var(--border); }
+    .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; align-items: start; }
+    .package-card { border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 2.2rem 1.8rem; background: rgba(255,255,255,0.02); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .package-card:hover { border-color: var(--border); background: rgba(232, 134, 10, 0.04); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .package-card.featured { border-color: var(--orange); background: rgba(232, 134, 10, 0.05); }
+    .package-card.featured::before { content: 'Recommended'; position: absolute; top: 0; left: 0; right: 0; background: var(--orange); color: var(--navy); text-align: center; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem; }
+    .package-card.featured { padding-top: 3rem; }
+    .package-name { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+    .package-price { font-family: var(--font-display); font-size: 2.4rem; font-weight: 400; color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
+    .package-price span { font-size: 0.95rem; color: var(--text-muted); font-family: var(--font-body); font-weight: 300; }
+    .package-setup { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .package-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.8rem; }
+    .package-feature { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.84rem; color: var(--cream-dim); line-height: 1.5; }
+    .package-feature::before { content: '✓'; color: var(--orange); font-size: 0.75rem; margin-top: 0.15rem; flex-shrink: 0; }
+
+    /* WHO */
+    #who { background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%); border-top: 1px solid var(--border); }
+    .trades-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+    .trade-tag { padding: 1rem 1.2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; font-size: 0.88rem; color: var(--cream-dim); text-align: center; transition: all 0.2s; }
+    .trade-tag:hover { border-color: var(--border); color: var(--cream); background: rgba(232,134,10,0.05); }
+
+    /* CTA */
+    #cta { background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%); border-top: 1px solid var(--border); text-align: center; }
+
+    /* FOOTER */
+    footer { background: #080f1a; padding: 3rem 4rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; letter-spacing: 0.2em; color: var(--white); }
+    .footer-tagline { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--orange); text-transform: uppercase; margin-top: 3px; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+    .divider { padding: 0; border-bottom: 1px solid var(--border); margin: 0; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0.8rem 1rem; overflow-x: auto; justify-content: flex-start; }
+      .nav-links { gap: 1.2rem; flex-wrap: nowrap; }
+      .nav-links a { font-size: 0.75rem; white-space: nowrap; }
+      section, #hero { padding: 5rem 1.5rem; }
+      .problem-grid, .packages-grid, .trades-grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-back">← Home</a></li>
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#who">Who We Serve</a></li>
+      <li><a href="https://calendly.com/fizza-norova/30min" class="nav-cta">Book a Call</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-label">Norova for Trades & Construction</span>
+      <div class="hero-norova">NOROVA</div>
+      <div class="hero-tagline">Your Business, On Autopilot.</div>
+      <h1 class="hero-headline">Never lose a job<br/>to a <em>faster competitor.</em></h1>
+      <p class="hero-sub">We build systems for GTA contractors that respond to every new inquiry within minutes, follow up on your behalf, and collect Google reviews — all without you lifting a finger.</p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/fizza-norova/30min" class="btn-primary">Book a Free 15-Min Call</a>
+        <a href="#problem" class="btn-ghost">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem">
+    <div class="section-inner">
+      <span class="section-label reveal">The Reality</span>
+      <h2 class="section-title reveal">Most contractors lose jobs<br/><em>before they even know it.</em></h2>
+      <div class="problem-grid">
+        <ul class="problem-list">
+          <li class="problem-item reveal"><span class="problem-icon">📞</span><div class="problem-text"><strong>Missed calls go unanswered</strong>A customer calls, gets voicemail, and books with the next contractor who picks up.</div></li>
+          <li class="problem-item reveal"><span class="problem-icon">⏰</span><div class="problem-text"><strong>Follow-ups never happen</strong>Busy schedules mean customers who showed interest never hear back — and move on.</div></li>
+          <li class="problem-item reveal"><span class="problem-icon">⭐</span><div class="problem-text"><strong>Reviews are left on the table</strong>Happy customers would leave a review — nobody ever asked them.</div></li>
+          <li class="problem-item reveal"><span class="problem-icon">🧾</span><div class="problem-text"><strong>Invoices go unpaid</strong>No system for chasing late payments means money sitting uncollected.</div></li>
+        </ul>
+        <div class="solution-card reveal">
+          <h3 class="solution-card-title">What Norova fixes</h3>
+          <ul class="solution-points">
+            <li class="solution-point">Missed call? Instant text back within 30 seconds</li>
+            <li class="solution-point">New inquiry? Response sent within minutes on your behalf</li>
+            <li class="solution-point">No reply? Follow-up sequence runs for 10 days</li>
+            <li class="solution-point">Job complete? Review request goes out automatically</li>
+            <li class="solution-point">Invoice unpaid? Reminders sent at 3, 7, and 14 days</li>
+            <li class="solution-point">You do none of this manually — it runs on its own</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="section-inner">
+      <span class="section-label reveal">Packages & Pricing</span>
+      <h2 class="section-title reveal">Simple, transparent <em>pricing.</em></h2>
+      <p class="section-body reveal">No long-term contracts. No hidden fees. Cancel anytime with 30 days notice.</p>
+      <div class="packages-grid">
+
+        <div class="package-card reveal">
+          <div class="package-name">Pilot</div>
+          <div class="package-price">$200<span> flat</span></div>
+          <div class="package-setup">One-time. No monthly retainer.</div>
+          <ul class="package-features">
+            <li class="package-feature">One system built for your business</li>
+            <li class="package-feature">Instant lead response email</li>
+            <li class="package-feature">See results before committing to more</li>
+            <li class="package-feature">Perfect for hesitant first-timers</li>
+          </ul>
+          <a href="https://calendly.com/fizza-norova/30min" class="btn-ghost" style="display:block;text-align:center;font-size:0.78rem;">Get Started</a>
+        </div>
+
+        <div class="package-card featured reveal">
+          <div class="package-name">Growth</div>
+          <div class="package-price">$500<span>/mo</span></div>
+          <div class="package-setup">$1,000 setup fee</div>
+          <ul class="package-features">
+            <li class="package-feature">Everything in Starter, plus:</li>
+            <li class="package-feature">Appointment reminders by email and text — day before and morning of job</li>
+            <li class="package-feature">Invoice follow-ups sent on your behalf at 3, 7, and 14 days overdue</li>
+            <li class="package-feature">Missed call instant text back within 30 seconds</li>
+            <li class="package-feature">Review request sent 2 days after every completed job</li>
+            <li class="package-feature">Follow-up emails stop the moment a customer converts</li>
+            <li class="package-feature">Full 8-stage pipeline — complete visibility on every inquiry</li>
+            <li class="package-feature">Branded quote landing page for your business</li>
+            <li class="package-feature">Monthly performance report and check-in call</li>
+          </ul>
+          <a href="https://calendly.com/fizza-norova/30min" class="btn-primary" style="display:block;text-align:center;font-size:0.78rem;">Book a Call</a>
+        </div>
+
+        <div class="package-card reveal">
+          <div class="package-name">Starter</div>
+          <div class="package-price">$300<span>/mo</span></div>
+          <div class="package-setup">$600 setup fee</div>
+          <ul class="package-features">
+            <li class="package-feature">Lead capture form connected to your pipeline</li>
+            <li class="package-feature">Every new inquiry gets a response within minutes</li>
+            <li class="package-feature">10-day follow-up sequence sent on your behalf</li>
+            <li class="package-feature">Every inquiry tracked in your pipeline</li>
+            <li class="package-feature">Fully managed by Norova on your behalf</li>
+            <li class="package-feature">Monthly performance report and 15-minute check-in call</li>
+          </ul>
+          <a href="https://calendly.com/fizza-norova/30min" class="btn-ghost" style="display:block;text-align:center;font-size:0.78rem;">Get Started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="who">
+    <div class="section-inner">
+      <span class="section-label reveal">Who We Work With</span>
+      <h2 class="section-title reveal">Built for GTA <em>trades businesses.</em></h2>
+      <p class="section-body reveal">If you run a trades or construction business in the GTA with 5-30 employees and you are losing jobs to competitors who respond faster — this is built for you.</p>
+      <div class="trades-grid reveal">
+        <div class="trade-tag">🏠 Roofing</div>
+        <div class="trade-tag">❄️ HVAC</div>
+        <div class="trade-tag">🔨 Renovation</div>
+        <div class="trade-tag">🪵 Flooring</div>
+        <div class="trade-tag">🧱 Concrete</div>
+        <div class="trade-tag">⚡ Electrical</div>
+        <div class="trade-tag">🔧 Plumbing</div>
+        <div class="trade-tag">🪟 Windows & Doors</div>
+        <div class="trade-tag">🌿 Landscaping</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="section-inner">
+      <span class="section-label reveal" style="display:block;text-align:center;">Get Started</span>
+      <h2 class="section-title reveal" style="text-align:center;">Ready to stop losing jobs<br/>to <em>faster competitors?</em></h2>
+      <p class="section-body reveal" style="margin:0 auto 3rem;text-align:center;">Book a free 15-minute call. I will show you exactly how it works for your trade and you can decide if it makes sense.</p>
+      <div class="reveal" style="text-align:center;">
+        <a href="https://calendly.com/fizza-norova/30min" class="btn-primary" style="font-size:0.9rem;padding:1rem 2.8rem;">Book Your Free Call</a>
+      </div>
+      <p style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-muted);text-align:center;" class="reveal">Or email <a href="mailto:fizza@norova.ca" style="color:var(--orange);text-decoration:none;">fizza@norova.ca</a> — we respond within 24 hours.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">N O R O V A</div><div class="footer-tagline">Your Business, On Autopilot.</div></div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="clinics.html">For Clinics</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="mailto:fizza@norova.ca">fizza@norova.ca</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Norova. GTA, Ontario.</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.background = window.scrollY > 50 ? 'rgba(13, 27, 46, 0.97)' : 'rgba(13, 27, 46, 0.85)';
+    });
+  </script>
+</body>
+</html>

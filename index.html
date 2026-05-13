@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Norova — We build systems for GTA service businesses that follow up with every customer, book more appointments, and collect reviews on your behalf." />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  <title>Norova — Your Business, On Autopilot.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2e;
+      --navy-mid: #132338;
+      --navy-light: #1a2e4a;
+      --orange: #e8860a;
+      --orange-light: #f5a030;
+      --teal: #00a896;
+      --cream: #f5f0e8;
+      --cream-dim: #d4cfc7;
+      --white: #ffffff;
+      --text-muted: #7a8a9a;
+      --border: rgba(232, 134, 10, 0.15);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--cream); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(13, 27, 46, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { background: transparent; border: 1px solid var(--orange); color: var(--orange) !important; padding: 0.5rem 1.4rem; border-radius: 2px; transition: all 0.2s !important; }
+    .nav-cta:hover { background: var(--orange) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; padding: 8rem 4rem 6rem; text-align: center; overflow: hidden;
+      background: #F5F0E8;
+    }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232, 134, 10, 0.08) 0%, transparent 60%), linear-gradient(180deg, #F5F0E8 0%, #EDE8DF 100%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(26, 46, 74, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 46, 74, 0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%); }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-norova { font-family: var(--font-display); font-size: clamp(3.5rem, 9vw, 6rem); font-weight: 600; letter-spacing: 0.18em; color: #1A2E4A; line-height: 1; margin-bottom: 0; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
+    .hero-tagline { font-family: var(--font-display); font-size: clamp(0.85rem, 2vw, 1.15rem); font-weight: 400; letter-spacing: 0.14em; color: #E8860A; margin-top: 0.2rem; font-style: italic; line-height: 1; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; margin-bottom: 2.5rem; }
+    .hero-headline { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: #1A2E4A; margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .hero-headline em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 1rem; color: #4a5568; max-width: 580px; margin: 0 auto 3rem; font-weight: 300; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+
+    /* NICHE CARDS */
+    .niche-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; margin: 0 auto; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+    .niche-card { border-radius: 8px; padding: 2.5rem 2rem; text-decoration: none; transition: all 0.3s ease; position: relative; overflow: hidden; text-align: left; }
+    .niche-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .niche-card.trades { background: var(--navy); border: 1px solid rgba(232,134,10,0.3); }
+    .niche-card.trades:hover { border-color: var(--orange); }
+    .niche-card.clinics { background: var(--navy); border: 1px solid rgba(0,168,150,0.3); }
+    .niche-card.clinics:hover { border-color: var(--teal); }
+    .niche-card-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+    .trades .niche-card-label { color: var(--orange); }
+    .clinics .niche-card-label { color: var(--teal); }
+    .niche-card-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; color: var(--white); margin-bottom: 0.75rem; line-height: 1.1; }
+    .niche-card-body { font-size: 0.85rem; color: var(--cream-dim); line-height: 1.6; margin-bottom: 1.5rem; }
+    .niche-card-cta { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .trades .niche-card-cta { color: var(--orange); }
+    .clinics .niche-card-cta { color: var(--teal); }
+
+    /* STATS */
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(26,46,74,0.15); opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-number { font-family: var(--font-display); font-size: 2.4rem; font-weight: 500; color: var(--orange); line-height: 1; display: block; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6a7a8a; margin-top: 0.4rem; display: block; }
+
+    /* HOW IT WORKS */
+    #how { padding: 7rem 4rem; background: var(--navy); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.15; color: var(--white); margin-bottom: 1.5rem; }
+    .section-title em { font-style: italic; color: var(--orange); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 2.5rem; left: calc(16.67% + 1rem); right: calc(16.67% + 1rem); height: 1px; background: linear-gradient(90deg, var(--orange), rgba(232, 134, 10, 0.2), var(--orange)); }
+    .step { text-align: center; padding: 2.5rem 1.5rem; }
+    .step-number { width: 5rem; height: 5rem; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--orange); background: var(--navy); position: relative; z-index: 1; transition: all 0.3s ease; }
+    .step:hover .step-number { background: rgba(232, 134, 10, 0.1); border-color: var(--orange); }
+    .step-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--white); margin-bottom: 0.75rem; }
+    .step-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ABOUT */
+    #about { padding: 7rem 4rem; background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%); border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .about-values { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .about-value { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: rgba(255,255,255,0.03); border-radius: 4px; border-left: 2px solid var(--orange); }
+    .about-value-text { font-size: 0.88rem; color: var(--cream-dim); }
+    .about-value-text strong { color: var(--cream); display: block; font-weight: 500; margin-bottom: 0.2rem; }
+    .section-body { font-size: 1rem; color: var(--cream-dim); max-width: 600px; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    /* CTA */
+    #cta { padding: 7rem 4rem; background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%); border-top: 1px solid var(--border); text-align: center; }
+    .btn-primary { display: inline-block; background: var(--orange); color: var(--navy); text-decoration: none; padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; transition: all 0.25s ease; border: 1px solid var(--orange); }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232, 134, 10, 0.25); }
+    .btn-ghost { display: inline-block; background: transparent; color: var(--navy); text-decoration: none; padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; border: 1px solid rgba(26, 46, 74, 0.3); transition: all 0.25s ease; }
+
+    /* FOOTER */
+    footer { background: #080f1a; padding: 3rem 4rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; letter-spacing: 0.2em; color: var(--white); }
+    .footer-tagline { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--orange); text-transform: uppercase; margin-top: 3px; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0.8rem 1rem; overflow-x: auto; justify-content: flex-start; }
+      .nav-links { gap: 1.2rem; flex-wrap: nowrap; }
+      .nav-links a { font-size: 0.75rem; letter-spacing: 0.05em; white-space: nowrap; }
+      #hero, #how, #about, #cta { padding: 5rem 1.5rem; }
+      .niche-cards { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-stats { gap: 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="trades.html">For Trades</a></li>
+      <li><a href="clinics.html">For Clinics</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://calendly.com/fizza-norova/30min" class="nav-cta">Book a Call</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div style="margin-bottom:2.5rem;">
+        <div class="hero-norova">NOROVA</div>
+        <div class="hero-tagline">Your Business, On Autopilot.</div>
+      </div>
+      <h1 class="hero-headline">Never lose a customer<br/>to a <em>faster competitor.</em></h1>
+      <p class="hero-sub">We build systems for GTA service businesses that respond to every new inquiry within minutes, follow up on your behalf, and collect reviews — without you lifting a finger.</p>
+
+      <div class="niche-cards">
+        <a href="trades.html" class="niche-card trades">
+          <span class="niche-card-label">Trades & Construction</span>
+          <div class="niche-card-title">For Contractors</div>
+          <p class="niche-card-body">Roofing, HVAC, renovation, flooring, concrete, and more. Never lose a job because a competitor picked up faster.</p>
+          <span class="niche-card-cta">See packages →</span>
+        </a>
+        <a href="clinics.html" class="niche-card clinics">
+          <span class="niche-card-label">Health & Wellness</span>
+          <div class="niche-card-title">For Clinics</div>
+          <p class="niche-card-body">Physiotherapy, dental, chiropractic, aesthetics, and more. Never lose a patient because nobody called them back.</p>
+          <span class="niche-card-cta">See packages →</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-number">2 min</span><span class="stat-label">Every inquiry gets a response within 2 minutes</span></div>
+        <div class="stat"><span class="stat-number">10 days</span><span class="stat-label">Follow-up sequence sent on your behalf</span></div>
+        <div class="stat"><span class="stat-number">30 sec</span><span class="stat-label">Missed call? Customer gets a text within 30 seconds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-inner">
+      <span class="section-label reveal">The Process</span>
+      <h2 class="section-title reveal">Up and running in <em>5 days.</em><br/>Running on its own forever.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Discovery Call</h3>
+          <p class="step-body">We spend 15 minutes understanding your business and what is currently falling through the cracks. No commitment.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">02</div>
+          <h3 class="step-title">We Build Everything</h3>
+          <p class="step-body">We set up your complete system in 3-5 days. You do not touch anything. We test everything before it goes live.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">03</div>
+          <h3 class="step-title">It Runs Itself</h3>
+          <p class="step-body">Every inquiry gets followed up. Every appointment gets a reminder. Every completed job or visit gets a review request. All on your behalf.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <span class="section-label reveal">About Norova</span>
+          <h2 class="section-title reveal">Built for businesses<br/><em>too busy to follow up.</em></h2>
+          <p class="section-body reveal">Norova was built for one reason: most local businesses lose customers not because of bad service, but because of slow follow-up. We fix that — for trades companies, clinics, driving schools, and service businesses across the GTA.</p>
+          <p class="section-body reveal">We work exclusively with GTA businesses. Our systems are built for the reality of running a local business in this market — not a generic template from somewhere else.</p>
+        </div>
+        <div class="reveal">
+          <div class="about-values">
+            <div class="about-value"><div class="about-value-text"><strong>Done for you, completely</strong>You never log into anything. We build it, manage it, and keep it running.</div></div>
+            <div class="about-value"><div class="about-value-text"><strong>Results in plain English</strong>No tech talk. Just: here is how many inquiries came in and how many followed up.</div></div>
+            <div class="about-value"><div class="about-value-text"><strong>Tested before it goes live</strong>Every single system is tested with real data before your first customer hits it.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="section-inner">
+      <span class="section-label reveal" style="display:block;text-align:center;">Get Started</span>
+      <h2 class="section-title reveal" style="text-align:center;font-size:clamp(2.4rem,5vw,4rem);">Ready to stop losing customers<br/>to <em>faster competitors?</em></h2>
+      <p class="section-body reveal" style="margin:0 auto 3rem;text-align:center;">Book a free 15-minute discovery call. No pitch, no pressure — just an honest conversation about whether this makes sense for your business.</p>
+      <div class="reveal" style="text-align:center;">
+        <a href="https://calendly.com/fizza-norova/30min" class="btn-primary" style="font-size:0.9rem;padding:1rem 2.8rem;">Book Your Free Call</a>
+      </div>
+      <p style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-muted);text-align:center;" class="reveal">Or email us at <a href="mailto:fizza@norova.ca" style="color:var(--orange);text-decoration:none;">fizza@norova.ca</a> — we respond within 24 hours.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">N O R O V A</div><div class="footer-tagline">Your Business, On Autopilot.</div></div>
+      <ul class="footer-links">
+        <li><a href="trades.html">For Trades</a></li>
+        <li><a href="clinics.html">For Clinics</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="mailto:fizza@norova.ca">fizza@norova.ca</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Norova. Serving trades, clinics & service businesses across the GTA.</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.padding = window.scrollY > 50 ? '1rem 4rem' : '1.5rem 4rem';
+      nav.style.background = window.scrollY > 50 ? 'rgba(13, 27, 46, 0.97)' : 'rgba(13, 27, 46, 0.85)';
+    });
+  </script>
+</body>
+</html>
