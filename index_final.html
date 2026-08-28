@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Norova — Capture every missed call, automate patient confirmations, and recover lost revenue. Built for GTA clinics." />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  <meta name="theme-color" content="#1E7BA3" />
+  <title>Norova — Clinic Automation for GTA Clinics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2e;
+      --navy-mid: #132338;
+      --navy-light: #1a2e4a;
+      --blue: #1E7BA3;
+      --blue-light: #2a94ba;
+      --orange: #F77F00;
+      --orange-light: #f99a2c;
+      --cream: #f5f0e8;
+      --cream-dim: #d4cfc7;
+      --white: #ffffff;
+      --text-muted: #7a8a9a;
+      --border: rgba(30, 123, 163, 0.15);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--cream); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(13, 27, 46, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { background: transparent; border: 1px solid var(--orange); color: var(--orange) !important; padding: 0.5rem 1.4rem; border-radius: 2px; transition: all 0.2s !important; }
+    .nav-cta:hover { background: var(--orange) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; padding: 8rem 4rem 6rem; text-align: center; overflow: hidden;
+      background: #F5F0E8;
+    }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(247, 127, 0, 0.08) 0%, transparent 60%), linear-gradient(180deg, #F5F0E8 0%, #EDE8DF 100%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(26, 46, 74, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 46, 74, 0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%); }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-norova { font-family: var(--font-display); font-size: clamp(3.5rem, 9vw, 6rem); font-weight: 600; letter-spacing: 0.18em; color: #1A2E4A; line-height: 1; margin-bottom: 0; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
+    .hero-tagline { font-family: var(--font-display); font-size: clamp(0.85rem, 2vw, 1.15rem); font-weight: 400; letter-spacing: 0.14em; color: var(--orange); margin-top: 0.2rem; font-style: italic; line-height: 1; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; margin-bottom: 2.5rem; }
+    .hero-headline { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: #1A2E4A; margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .hero-headline em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 1rem; color: #4a5568; max-width: 580px; margin: 0 auto 3rem; font-weight: 300; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+
+    /* CTA BUTTON */
+    .hero-cta { display: inline-block; background: var(--orange); color: var(--navy) !important; text-decoration: none !important; padding: 1rem 2.5rem; border-radius: 3px; font-weight: 500; letter-spacing: 0.05em; transition: all 0.3s; text-transform: uppercase; font-size: 0.85rem; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+    .hero-cta:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(247, 127, 0, 0.3); }
+
+    /* STATS */
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(26,46,74,0.15); opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-number { font-family: var(--font-display); font-size: 2.4rem; font-weight: 500; color: var(--orange); line-height: 1; display: block; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6a7a8a; margin-top: 0.4rem; display: block; }
+
+    /* HOW IT WORKS */
+    #how { padding: 7rem 4rem; background: var(--navy); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.15; color: var(--white); margin-bottom: 1.5rem; }
+    .section-title em { font-style: italic; color: var(--orange); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 2.5rem; left: calc(16.67% + 1rem); right: calc(16.67% + 1rem); height: 1px; background: linear-gradient(90deg, var(--orange), rgba(247, 127, 0, 0.2), var(--orange)); }
+    .step { text-align: center; padding: 2.5rem 1.5rem; }
+    .step-number { width: 5rem; height: 5rem; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--orange); background: var(--navy); position: relative; z-index: 1; transition: all 0.3s ease; }
+    .step:hover .step-number { background: rgba(247, 127, 0, 0.1); border-color: var(--orange); }
+    .step-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--white); margin-bottom: 0.75rem; }
+    .step-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ABOUT */
+    #about { padding: 7rem 4rem; background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%); border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .about-values { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .about-value { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: rgba(255,255,255,0.03); border-radius: 4px; border-left: 2px solid var(--orange); }
+    .about-value-text { font-size: 0.88rem; color: var(--cream-dim); }
+    .about-value-text strong { color: var(--cream); display: block; font-weight: 500; margin-bottom: 0.2rem; }
+    .section-body { font-size: 1rem; color: var(--cream-dim); max-width: 600px; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    /* CTA */
+    #cta { padding: 7rem 4rem; background: var(--navy-light); border-top: 1px solid var(--border); text-align: center; }
+    .btn-primary { display: inline-block; background: var(--orange); color: var(--navy) !important; text-decoration: none !important; padding: 1.2rem 3rem; border-radius: 3px; font-weight: 500; letter-spacing: 0.05em; transition: all 0.3s; text-transform: uppercase; font-size: 0.85rem; }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(247, 127, 0, 0.3); }
+
+    /* FOOTER */
+    footer { padding: 3rem 4rem; background: var(--navy); border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.15em; font-weight: 600; color: var(--cream); }
+    .footer-tagline { font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 0.4rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-copy { grid-column: 1 / -1; font-size: 0.75rem; color: var(--text-muted); text-align: center; padding-top: 2rem; border-top: 1px solid var(--border); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal.visible { opacity: 1 !important; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; font-size: 0.7rem; }
+      #hero { padding: 6rem 2rem 4rem; }
+      #how, #about, #cta { padding: 4rem 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+      .steps::before { display: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="clinics.html">Packages</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://calendly.com/fizza-norova/30min" class="nav-cta">Book A Call</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div style="margin-bottom:2.5rem;">
+        <div class="hero-norova">NOROVA</div>
+        <div class="hero-tagline">Your Business, On Autopilot.</div>
+      </div>
+      <h1 class="hero-headline">Never lose a patient<br/>to a <em>missed call.</em></h1>
+      <p class="hero-sub">Most independent clinics lose 10–15% of calls because they're with another patient. That's 3–5 patients per month × $150 per appointment = $450–750 in lost revenue monthly. Norova captures every call, sends a text, and books the appointment automatically — so you recover those missed patients.</p>
+
+      <a href="clinics.html" class="hero-cta">See Packages</a>
+
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-number">3–5</span><span class="stat-label">Missed patients recovered per month</span></div>
+        <div class="stat"><span class="stat-number">48 hrs</span><span class="stat-label">From close to live automation</span></div>
+        <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Of missed calls captured</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-inner">
+      <span class="section-label reveal">The Process</span>
+      <h2 class="section-title reveal">Up and running in <em>48 hours.</em><br/>Running on its own forever.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">01</div>
+          <h3 class="step-title">15-Minute Demo</h3>
+          <p class="step-body">We show you exactly how it works for your clinic. No pitch. Just proof. See how a patient call becomes a booked appointment automatically.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">02</div>
+          <h3 class="step-title">We Build Everything</h3>
+          <p class="step-body">We set up your complete system in 24–48 hours. You don't touch anything. Every call route, text, reminder, and follow-up is tested before it goes live.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">03</div>
+          <h3 class="step-title">You Recover Patients</h3>
+          <p class="step-body">Every missed call becomes a patient. Appointments auto-confirm. Reminders go out 24 hours before. Your team focuses on care — the system handles everything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <span class="section-label reveal">About Norova</span>
+          <h2 class="section-title reveal">Built for clinics<br/><em>that want to grow.</em></h2>
+          <p class="section-body reveal">Norova was built for one reason: independent clinics lose patients not because of bad service, but because of missed calls and poor follow-up. Most clinics lose 10–15% of incoming calls — that's thousands in lost revenue every month.</p>
+          <p class="section-body reveal">We work exclusively with clinics across the GTA — physiotherapy, chiropractic, and dental. Our systems are built for the reality of running a clinic in this market, not some generic template.</p>
+        </div>
+        <div class="reveal">
+          <div class="about-values">
+            <div class="about-value"><div class="about-value-text"><strong>Done for you, completely</strong>You never log into anything. We build it, manage it, and keep it running. Your team focuses on patients.</div></div>
+            <div class="about-value"><div class="about-value-text"><strong>Results in plain English</strong>No tech talk. Just: here is how many calls came in, how many patients booked, how much revenue recovered.</div></div>
+            <div class="about-value"><div class="about-value-text"><strong>Live within 48 hours</strong>Every system is tested with real data before your first call comes through. Fast setup, zero chaos.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <div class="section-inner">
+      <span class="section-label reveal" style="display:block;text-align:center;">Get Started</span>
+      <h2 class="section-title reveal" style="text-align:center;font-size:clamp(2.4rem,5vw,4rem);">Ready to recover<br/>those <em>missed patients?</em></h2>
+      <p class="section-body reveal" style="margin:0 auto 3rem;text-align:center;">Book a free 15-minute discovery call. No pitch, no pressure — just an honest conversation about how many calls you're losing and how much that costs you.</p>
+      <div class="reveal" style="text-align:center;">
+        <a href="https://calendly.com/fizza-norova/30min" class="btn-primary" style="font-size:0.9rem;padding:1rem 2.8rem;">Book Your Free Call</a>
+      </div>
+      <p style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-muted);text-align:center;" class="reveal">Or email us at <a href="mailto:fizza@norova.ca" style="color:var(--orange);text-decoration:none;">fizza@norova.ca</a> — we respond within 24 hours.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">N O R O V A</div><div class="footer-tagline">Your Business, On Autopilot.</div></div>
+      <ul class="footer-links">
+        <li><a href="clinics.html">Packages</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="mailto:fizza@norova.ca">fizza@norova.ca</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Norova. Helping clinics across the GTA recover lost patients.</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.padding = window.scrollY > 50 ? '1rem 4rem' : '1.5rem 4rem';
+      nav.style.background = window.scrollY > 50 ? 'rgba(13, 27, 46, 0.97)' : 'rgba(13, 27, 46, 0.85)';
+    });
+  </script>
+</body>
+</html>
