@@ -1,218 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Norova Clinic Packages — Pilot, Starter, and Growth plans for GTA clinics. Capture missed calls, automate reminders, recover lost patients." />
-<meta name="robots" content="index, follow" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta http-equiv="X-Frame-Options" content="DENY" />
-<meta name="theme-color" content="#1E7BA3" />
-<title>Clinic Packages — Norova</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-<style>
-:root {
---blue: #1E7BA3;
---blue-light: #2a94ba;
---orange: #F77F00;
---orange-light: #f99a2c;
---cream: #f5f0e8;
---cream-dim: #d4cfc7;
---white: #ffffff;
---navy: #0d1b2e;
---navy-dark: #05111f;
---text-dark: #1a2e4a;
---text-muted: #5a6a7a;
---border: rgba(30, 123, 163, 0.2);
---font-display: 'Cormorant Garamond', Georgia, serif;
---font-body: 'DM Sans', sans-serif;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--cream); color: var(--text-dark); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: center; background: rgba(13, 27, 46, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
-.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-.nav-links a { color: var(--cream); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; white-space: nowrap; }
-.nav-links a:hover { color: var(--orange); }
-.nav-cta { background: transparent; border: 1px solid var(--orange); color: var(--orange) !important; padding: 0.5rem 1.4rem; border-radius: 2px; transition: all 0.2s !important; }
-.nav-cta:hover { background: var(--orange) !important; color: var(--navy) !important; }
-.nav-back { color: var(--text-muted) !important; font-size: 0.75rem !important; opacity: 0.8; }
-#hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 8rem 4rem 5rem; text-align: center; overflow: hidden; background: linear-gradient(180deg, #f5f0e8 0%, #ede8df 100%); }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(30, 123, 163, 0.08) 0%, transparent 60%); }
-.hero-content { position: relative; z-index: 1; max-width: 820px; }
-.hero-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards; }
-.hero-norova { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 600; letter-spacing: 0.18em; color: var(--text-dark); line-height: 1; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
-.hero-tagline { font-family: var(--font-display); font-size: clamp(0.8rem, 1.8vw, 1rem); font-weight: 400; letter-spacing: 0.14em; color: var(--orange); margin-top: 0.2rem; font-style: italic; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
-.hero-headline { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--text-dark); margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
-.hero-headline em { font-style: italic; color: var(--orange); }
-.hero-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 2.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
-.btn-primary { display: inline-block; background: var(--orange); color: var(--white) !important; text-decoration: none; padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; transition: all 0.25s ease; border: 1px solid var(--orange); }
-.btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(247, 127, 0, 0.3); }
-.btn-ghost { display: inline-block; background: transparent; color: var(--blue); text-decoration: none; padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; border: 1px solid var(--blue); transition: all 0.25s ease; }
-.btn-ghost:hover { background: rgba(30, 123, 163, 0.1); }
-section { position: relative; z-index: 1; padding: 6rem 4rem; background: var(--cream); }
-.section-inner { max-width: 1100px; margin: 0 auto; }
-.section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
-.section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; color: var(--text-dark); margin-bottom: 1.5rem; }
-.section-title em { font-style: italic; color: var(--orange); }
-.section-body { font-size: 1rem; color: var(--text-muted); max-width: 600px; line-height: 1.8; margin-bottom: 1rem; }
-/* PACKAGES */
-#packages { background: var(--cream); }
-.packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; align-items: start; }
-.package-card { border: 2px solid var(--cream-dim); border-radius: 8px; padding: 2.5rem 2rem; background: var(--white); transition: all 0.3s ease; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-.package-card:hover { border-color: var(--blue); transform: translateY(-6px); box-shadow: 0 12px 35px rgba(30, 123, 163, 0.15); }
-.package-card.featured { border-color: var(--orange); border-width: 2px; box-shadow: 0 8px 25px rgba(247, 127, 0, 0.15); }
-.package-card.featured::before { content: 'Recommended'; position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(90deg, var(--orange), var(--orange-light)); color: var(--white); text-align: center; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.5rem; }
-.package-card.featured { padding-top: 3.5rem; }
-.package-name { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; font-weight: 600; }
-.package-price { font-family: var(--font-display); font-size: 2.6rem; font-weight: 600; color: var(--text-dark); line-height: 1; margin-bottom: 0.2rem; }
-.package-price span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
-.package-setup { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.8rem; font-weight: 400; }
-.package-features { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
-.package-feature { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-.package-feature:first-child { font-weight: 600; color: var(--text-dark); }
-.package-feature::before { content: '✓ '; color: var(--orange); font-weight: 600; margin-right: 0.3rem; }
-.package-feature:first-child::before { content: ''; margin-right: 0; }
-.package-feature.diff::before { content: '★ '; color: var(--blue); font-weight: 700; }
-#who { background: var(--cream); }
-.clinics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
-.clinic-tag { background: var(--white); border: 1.5px solid var(--blue); border-radius: 6px; padding: 1.2rem; text-align: center; font-size: 0.85rem; color: var(--text-dark); transition: all 0.3s ease; font-weight: 500; }
-.clinic-tag:hover { background: rgba(30, 123, 163, 0.08); border-color: var(--orange); transform: translateY(-3px); }
-#cta { padding: 6rem 4rem; background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%); text-align: center; }
-#cta .section-label { color: var(--white); font-weight: 600; }
-#cta .section-title { color: var(--navy-dark); }
-#cta .section-body { color: var(--navy-dark); max-width: 700px; }
-#cta .btn-primary { background: var(--navy-dark); color: var(--white) !important; border: 1px solid var(--navy-dark); }
-#cta .btn-primary:hover { background: var(--text-dark); border-color: var(--text-dark); }
-#cta .cta-footnote { color: var(--navy-dark); }
-#cta .cta-footnote a { color: var(--navy-dark) !important; text-decoration: underline !important; font-weight: 600; }
-footer { padding: 3.5rem 4rem; background: var(--cream); border-top: 2px solid var(--cream-dim); }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
-.footer-logo { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.15em; font-weight: 600; color: var(--text-dark); }
-.footer-tagline { font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 0.4rem; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-.footer-links a { color: var(--text-dark); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-.footer-links a:hover { color: var(--orange); }
-.footer-copy { grid-column: 1 / -1; font-size: 0.75rem; color: var(--text-muted); text-align: center; padding-top: 2rem; border-top: 1px solid var(--cream-dim); }
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-.reveal.visible { opacity: 1 !important; }
-@media (max-width: 768px) {
-nav { padding: 1rem 1.5rem; }
-.nav-links { gap: 1.2rem; font-size: 0.7rem; }
-#hero { padding: 6rem 2rem 4rem; }
-section { padding: 4rem 2rem; }
-.packages-grid { grid-template-columns: 1fr; }
-.clinics-grid { grid-template-columns: repeat(2, 1fr); }
-.footer-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Norova</title>
+    <style>
+        :root {
+            --primary-blue: #1E7BA3;
+            --primary-orange: #F77F00;
+            --text-dark: #1a2e4a;
+            --background-light: #f5f0e8;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+        
+        header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #f8f8f8;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        nav a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h2 {
+            color: var(--primary-orange);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        strong {
+            color: var(--text-dark);
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 2rem 0;
+        }
+        
+        footer {
+            background: var(--background-light);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-dark);
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav>
-<ul class="nav-links">
-<li><a href="/" class="nav-back">← Back Home</a></li>
-<li><a href="/#how">How It Works</a></li>
-<li><a href="#packages">Packages</a></li>
-<li><a href="https://calendly.com/fizza-norova/30min" class="nav-cta">Book A Call</a></li>
-</ul>
-</nav>
-<section id="hero">
-<div class="hero-bg"></div>
-<div class="hero-content">
-<div class="hero-label reveal">Clinic Packages</div>
-<div class="hero-norova">NOROVA</div>
-<div class="hero-tagline">Patient Communication, On Autopilot.</div>
-<h1 class="hero-headline">Simple, transparent <em>pricing</em></h1>
-<p class="hero-sub">Pick the package that fits your clinic. All plans include setup, testing, and ongoing support. Questions? Book a free 15-minute call.</p>
-</div>
-</section>
-<section id="packages">
-<div class="section-inner">
-<span class="section-label reveal">Choose Your Plan</span>
-<h2 class="section-title reveal">Start small, <em>scale fast.</em></h2>
-<div class="packages-grid">
-<div class="package-card reveal">
-<div class="package-name">Pilot</div>
-<div class="package-price">$200</div>
-<div class="package-setup">One-time</div>
-<ul class="package-features">
-<li class="package-feature">30-day proof period</li>
-<li class="package-feature diff">Instant missed-call text-back</li>
-<li class="package-feature">Basic booking page</li>
-<li class="package-feature">Support available</li>
-<li class="package-feature">Perfect for testing</li>
-</ul>
-<a href="https://calendly.com/fizza-norova/30min" class="btn-ghost" style="display:block;text-align:center;font-size:0.78rem;width:100%;">Get Started</a>
-</div>
-<div class="package-card featured reveal">
-<div class="package-name">Growth</div>
-<div class="package-price">$1,200<span>/mo</span></div>
-<div class="package-setup">$1,500 setup fee</div>
-<ul class="package-features">
-<li class="package-feature">Everything in Starter, plus:</li>
-<li class="package-feature diff">Patient reactivation automation</li>
-<li class="package-feature diff">24/7 chatbot for FAQs</li>
-<li class="package-feature">Advanced branded booking</li>
-<li class="package-feature">Monthly performance report & strategy call</li>
-<li class="package-feature">Priority support</li>
-</ul>
-<a href="https://calendly.com/fizza-norova/30min" class="btn-primary" style="display:block;text-align:center;font-size:0.78rem;width:100%;">Book a Call</a>
-</div>
-<div class="package-card reveal">
-<div class="package-name">Starter</div>
-<div class="package-price">$800<span>/mo</span></div>
-<div class="package-setup">$800 setup fee</div>
-<ul class="package-features">
-<li class="package-feature">Complete communication system</li>
-<li class="package-feature diff">Instant missed-call texts</li>
-<li class="package-feature">Online booking system</li>
-<li class="package-feature">All platforms integration</li>
-<li class="package-feature">Auto reminders 24hr & 1hr</li>
-<li class="package-feature">Google review requests</li>
-<li class="package-feature">Monthly check-in call</li>
-</ul>
-<a href="https://calendly.com/fizza-norova/30min" class="btn-ghost" style="display:block;text-align:center;font-size:0.78rem;width:100%;">Get Started</a>
-</div>
-</div>
-</div>
-</section>
-<section id="cta">
-<div class="section-inner">
-<span class="section-label reveal" style="display:block;text-align:center;">Ready?</span>
-<h2 class="section-title reveal" style="text-align:center;">Book your free 15-minute call</h2>
-<p class="section-body reveal" style="margin:0 auto 3rem;text-align:center;">No pitch. No pressure. Just a conversation about your clinic's missed calls and how much that costs you.</p>
-<div class="reveal" style="text-align:center;">
-<a href="https://calendly.com/fizza-norova/30min" class="btn-primary" style="font-size:0.9rem;padding:1rem 2.8rem;">Book Your Free Call</a>
-</div>
-<p class="cta-footnote reveal" style="margin-top:1.5rem;font-size:0.8rem;text-align:center;">Or email <a href="mailto:fizza@norova.ca">fizza@norova.ca</a> — we respond within 24 hours.</p>
-</div>
-</section>
-<footer>
-<div class="footer-inner">
-<div><div class="footer-logo">N O R O V A</div><div class="footer-tagline">Patient Communication, On Autopilot.</div></div>
-<ul class="footer-links">
-<li><a href="/">Home</a></li>
-<li><a href="#packages">Packages</a></li>
-<li><a href="/privacy/">Privacy Policy</a></li>
-<li><a href="mailto:fizza@norova.ca">fizza@norova.ca</a></li>
-</ul>
-<div class="footer-copy">© 2026 Norova. Helping clinics across the GTA recover lost patients.</div>
-</div>
-</footer>
-<script>
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-window.addEventListener('scroll', () => {
-const nav = document.querySelector('nav');
-nav.style.background = window.scrollY > 50 ? 'rgba(13, 27, 46, 0.97)' : 'rgba(13, 27, 46, 0.85)';
-});
-</script>
+    <header>
+        <h1>Privacy Policy</h1>
+        <p>Norova — Patient Communication System for Clinics</p>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="clinics.html">Packages</a>
+        <a href="privacy.html">Privacy Policy</a>
+    </nav>
+    
+    <div class="container">
+        <p><strong>Last Updated: September 2026</strong></p>
+        
+        <h2>Introduction</h2>
+        <p>Norova ("we," "us," "our") operates a patient communication system that helps clinics in Canada capture missed calls, send appointment reminders, and manage patient bookings. This Privacy Policy explains how we collect, use, protect, and handle personal information in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Canadian privacy laws.</p>
+        
+        <hr>
+        
+        <h2>What Information We Collect</h2>
+        <p>We collect and process the following personal information on behalf of clinics:</p>
+        <ul>
+            <li>Patient names</li>
+            <li>Phone numbers</li>
+            <li>Email addresses</li>
+            <li>Appointment dates and times</li>
+            <li>Clinic booking and communication records</li>
+        </ul>
+        <p>This information is collected when:</p>
+        <ul>
+            <li>A patient calls the clinic</li>
+            <li>A patient fills out an online form or booking request</li>
+            <li>A patient communicates via text, email, or social media</li>
+            <li>The clinic enters patient information into the system</li>
+        </ul>
+        
+        <hr>
+        
+        <h2>How We Use Your Information</h2>
+        <p>We use patient information only for the purposes the clinic has authorized:</p>
+        <ul>
+            <li>Sending appointment reminders (via text or email)</li>
+            <li>Capturing missed calls and notifying patients</li>
+            <li>Booking appointments and managing schedules</li>
+            <li>Sending appointment confirmations</li>
+            <li>Communicating with patients on behalf of the clinic</li>
+        </ul>
+        <p><strong>We do NOT:</strong></p>
+        <ul>
+            <li>Sell or share your data with third parties</li>
+            <li>Use your information for marketing (unless the clinic requests it)</li>
+            <li>Store health records or medical information</li>
+            <li>Access or use your data for any purpose beyond what the clinic has authorized</li>
+        </ul>
+        
+        <hr>
+        
+        <h2>Data Protection & Security</h2>
+        <p>All patient information is protected using industry-standard security measures:</p>
+        <ul>
+            <li>Data is encrypted during transmission and at rest</li>
+            <li>Access to patient data is restricted to authorized clinic staff only</li>
+            <li>Our systems use enterprise-grade infrastructure</li>
+            <li>We maintain secure backups of all data</li>
+            <li>We monitor our systems for unauthorized access attempts</li>
+        </ul>
+        
+        <hr>
+        
+        <h2>Data Storage & Location</h2>
+        <p>Patient information may be stored on servers located outside of Canada, including in the United States. These servers use the same encryption and security standards as Canadian data centers. By using Norova, you consent to your data being processed and stored in this manner.</p>
+        
+        <hr>
+        
+        <h2>Your Rights</h2>
+        <p>Under PIPEDA, you have the right to:</p>
+        <ul>
+            <li><strong>Access:</strong> Request to see what personal information we hold about you</li>
+            <li><strong>Correction:</strong> Request that inaccurate or incomplete information be corrected</li>
+            <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal requirements)</li>
+            <li><strong>Withdraw Consent:</strong> Stop receiving communications from the clinic at any time by replying "STOP" to text messages or contacting the clinic directly</li>
+        </ul>
+        <p>To exercise any of these rights, contact the clinic directly or email: <a href="mailto:fizza@norova.ca">fizza@norova.ca</a></p>
+        
+        <hr>
+        
+        <h2>How Long We Keep Your Information</h2>
+        <p>We retain patient information as long as the clinic maintains an active account with Norova. When an account is closed, all patient data is securely deleted within 30 days, unless the clinic requests archival.</p>
+        
+        <hr>
+        
+        <h2>Third-Party Services</h2>
+        <p>Norova uses the following trusted platforms to deliver our service:</p>
+        <ul>
+            <li>GoHighLevel (CRM and communication platform)</li>
+            <li>Make.com (automation and integration)</li>
+            <li>Google My Business (for booking integration)</li>
+        </ul>
+        <p>These platforms are subject to their own privacy policies and security standards. We have data processing agreements in place to ensure they comply with Canadian privacy requirements.</p>
+        
+        <hr>
+        
+        <h2>Clinic Responsibility</h2>
+        <p>Clinics using Norova are responsible for:</p>
+        <ul>
+            <li>Obtaining patient consent before their information is processed</li>
+            <li>Informing patients about how their data will be used</li>
+            <li>Complying with their own privacy obligations under PIPEDA</li>
+            <li>Responding to patient requests for data access or correction</li>
+        </ul>
+        
+        <hr>
+        
+        <h2>Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the updated policy on our website.</p>
+        
+        <hr>
+        
+        <h2>Contact Us</h2>
+        <p>If you have questions about this Privacy Policy or how your personal information is handled, contact us at:</p>
+        <p>
+            <strong>Norova</strong><br>
+            Email: <a href="mailto:fizza@norova.ca">fizza@norova.ca</a><br>
+            Phone: <a href="tel:+16474952010">+1 (647) 495-2010</a><br>
+            Address: Mississauga, Ontario, Canada
+        </p>
+        <p>For privacy complaints or concerns, you can also contact the <a href="https://www.priv.gc.ca" target="_blank">Office of the Privacy Commissioner of Canada</a>.</p>
+        
+        <hr>
+        
+        <h2>Commitment to PIPEDA Compliance</h2>
+        <p>Norova is committed to protecting your privacy and complying with the Personal Information Protection and Electronic Documents Act (PIPEDA). This Privacy Policy outlines our commitment to responsible data handling and transparency.</p>
+        <p>By using Norova's services, you acknowledge that you have read and understood this Privacy Policy.</p>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Norova. All rights reserved.</p>
+        <p>Patient Communication System for Clinics in the GTA</p>
+    </footer>
 </body>
 </html>
